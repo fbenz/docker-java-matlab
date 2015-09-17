@@ -21,8 +21,8 @@ RUN curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie"\
 # Install MatLab runtime
 RUN \
 	cd /mcr-install && \
-	wget -nv http://de.mathworks.com/supportfiles/downloads/R2015a/deployment_files/R2015a/installers/glnxa64/MCR_R2015a_glnxa64_installer.zip && \
-	unzip MCR_R2015a_glnxa64_installer.zip && \
+	wget -nv http://de.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip && \
+	unzip MCR_R2015b_glnxa64_installer.zip && \
 	mkdir /opt/mcr && \
 	./install -inputFile matlab.txt && \
 	cd / && \
