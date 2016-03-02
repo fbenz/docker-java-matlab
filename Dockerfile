@@ -2,10 +2,12 @@ FROM ubuntu:14.04
 
 MAINTAINER Florian Benz
 
-ENV JAVA_VERSION_MAJOR 8
-ENV JAVA_VERSION_MINOR 72
-ENV JAVA_VERSION_BUILD 15
-ENV JAVA_PACKAGE       server-jre
+ENV JAVA_VERSION_MAJOR=8 \
+  JAVA_VERSION_MINOR=74 \
+  JAVA_VERSION_BUILD=02 \
+  JAVA_PACKAGE=server-jre \
+  JAVA_HOME=/opt/jdk \
+  PATH=${PATH}:/opt/jdk/bin
 
 ADD matlab.txt /mcr-install/matlab.txt
 
@@ -28,9 +30,3 @@ RUN \
 	cd / && \
 	rm -rf mcr-install
 
-# Set environment
-ENV JAVA_HOME /opt/jdk
-ENV PATH ${PATH}:${JAVA_HOME}/bin
-
-# Define default command
-CMD ["bash"]
