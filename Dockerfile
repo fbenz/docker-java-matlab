@@ -1,24 +1,11 @@
-FROM ubuntu:14.04
+FROM java:openjdk-8u72-jre
 
 MAINTAINER Florian Benz
-
-ENV JAVA_VERSION_MAJOR=8 \
-  JAVA_VERSION_MINOR=74 \
-  JAVA_VERSION_BUILD=02 \
-  JAVA_PACKAGE=server-jre \
-  JAVA_HOME=/opt/jdk \
-  PATH=${PATH}:/opt/jdk/bin
 
 ADD matlab.txt /mcr-install/matlab.txt
 
 RUN apt-get update && \
 	apt-get install -y curl wget unzip xorg
-
-# Download and unarchive Oracle Java
-RUN curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie"\
-  http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz \
-    | tar -xzf - -C /opt &&\
-    ln -s /opt/jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR} /opt/jdk
 
 # Install MatLab runtime
 RUN \
