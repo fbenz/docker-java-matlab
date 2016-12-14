@@ -1,4 +1,4 @@
-FROM java:openjdk-8u91-jre
+FROM openjdk:8u111-jre
 
 MAINTAINER Florian Benz
 
